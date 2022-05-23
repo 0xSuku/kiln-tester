@@ -1,0 +1,25 @@
+{
+  "name": "kiln",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/kiln-farming.js",
+  "scripts": {
+    "start": "tsc && node dist/kiln-farming.js",
+    "lint": "eslint . --ext .ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^17.0.35",
+    "@typescript-eslint/eslint-plugin": "^5.25.0",
+    "@typescript-eslint/parser": "^5.25.0",
+    "eslint": "^8.16.0",
+    "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "ethers": "^5.6.7",
+    "fs": "^0.0.1-security"
+  }
+}
