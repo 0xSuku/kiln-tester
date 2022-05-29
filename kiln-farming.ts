@@ -7,6 +7,7 @@ import * as fs from 'fs';
 // 4) oneHundredTxs -> Sends from n to 0 x times the value of 0.000000001 ETH  (several hours)
 
 const mnemonic = ""
+const accountsAmount = 10
 
 const providerKiln = 'https://rpc.kiln.themerge.dev';
 const provider_kiln = ethers.providers.getDefaultProvider(providerKiln);
@@ -31,7 +32,7 @@ const init = async () => {
 }
 
 async function fundWallets() {
-    for (let i = 1; i < 100; i++) {
+    for (let i = 1; i < accountsAmount; i++) {
         const wallet = ethers.Wallet.fromMnemonic(mnemonic, `m/44'/60'/0'/0/${i}`);
         let tx = {
             ...gasObject,
@@ -45,7 +46,7 @@ async function fundWallets() {
 }
 
 async function deployTenContracts() {
-    for (let account = 0; account < 100; account++) {
+    for (let account = 0; account < accountsAmount; account++) {
         const currentWallet = ethers.Wallet.fromMnemonic(mnemonic, `m/44'/60'/0'/0/${account}`);
         const currentAccount = currentWallet.connect(provider_kiln);
 
@@ -80,7 +81,7 @@ const banksAddresses = [
 ]
 
 async function tenTimesTenTxs() {
-    for (let account = 0; account < 100; account++) {
+    for (let account = 0; account < accountsAmount; account++) {
         const currentWallet = ethers.Wallet.fromMnemonic(mnemonic, `m/44'/60'/0'/0/${account}`);
         const currentAccount = currentWallet.connect(provider_kiln);
 
@@ -101,7 +102,7 @@ async function tenTimesTenTxs() {
 }
 
 async function oneHundredTxs(to: string) {
-    for (let account = 84; account < 100; account++) {
+    for (let account = 0; account < 100; account++) {
         const currentWallet = ethers.Wallet.fromMnemonic(mnemonic, `m/44'/60'/0'/0/${account}`);
         const currentAccount = currentWallet.connect(provider_kiln);
         for (let txAmount = 0; txAmount < 120; txAmount++) {
